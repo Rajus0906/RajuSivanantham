@@ -60,7 +60,7 @@
 									
 									<p> Growing up, I always had an immense passion for playing video games. <br>
 								    It was one of the few ways I was able to spend time bonding with my brothers and parents or if I just wanted to release stress. <br>
-									If I got stuck on Mario I would hand the DS to my Mom, or if it was playing Call of Duty with my siblings and losing miserably, <br>
+									If I got stuck on Mario I would hand the DS to my mom, or if it was playing Call of Duty with my siblings and losing miserably, <br>
 									Games was always able to put a smile on our faces, Now being able to pursue making the thing I love most, I love <br>
 								    to be able to bring the same enjoyment to others the same way it did for me! </p>
 									<p>If you have any questions please feel free to contact me :)</p>
@@ -77,16 +77,46 @@
 					<div id="main">
 
 						<!-- Featured Project -->
-							<article class="Featured">
-								<header class="major">
-									<h1>Featured Project<br />
-									</a></h1>
-									<h2><a href="https://rajusivanantham.itch.io/ash">Ash</a></h2>
-									<strong>Unreal Engine 5 | Blueprints | Maya </strong>
-									<p>Glide. Explore. Discover. A 3D open world adventure game</p>
-								</header>
-								<a href="https://rajusivanantham.itch.io/ash" class="image main"><img src="images/Cover8.png" alt="Ash" /></a>
-							</article>
+						<article class="Featured">
+							<header class="major">
+								<h1>Featured Project<br /></h1>
+								<h2><a href="https://rajusivanantham.itch.io/ash">Ash</a></h2>
+								<strong>Unreal Engine 5 | Blueprints | Maya </strong>
+								<p>Glide. Explore. Discover. A 3D open world adventure game</p>
+							</header>
+
+							<!-- Slideshow Container -->
+							<div class="slideshow-container">
+								<!-- Slide 1 -->
+								<div class="mySlides fade">
+									<img src="images/Cover8.png" alt="Ash Cover Image" style="width:100%">
+									<div class="text">Ash - Cover Image</div>
+								</div>
+
+								<!-- Slide 2 -->
+								<div class="mySlides fade">
+									<img src="images/BloodstainMoonBanner.png" alt="Ash Screenshot 1" style="width:100%">
+									<div class="text">Ash - Gameplay Screenshot 1</div>
+								</div>
+
+								<!-- Slide 3 -->
+								<div class="mySlides fade">
+									<img src="images/spread.jpeg" alt="Ash Screenshot 2" style="width:100%">
+									<div class="text">Ash - Gameplay Screenshot 2</div>
+								</div>
+
+								<!-- Next and Previous Buttons -->
+								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							</div>
+
+							<!-- Dots/Circles for Navigation -->
+							<div style="text-align:center">
+								<span class="dot" onclick="currentSlide(1)"></span>
+								<span class="dot" onclick="currentSlide(2)"></span>
+								<span class="dot" onclick="currentSlide(3)"></span>
+							</div>
+						</article>
 
 							<article class="Game Projects">
 								<header class="major">
@@ -189,6 +219,55 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+
+			<script>
+				let slideIndex = 1;
+				showSlides(slideIndex);
+			
+				// Next/previous controls
+				function plusSlides(n) {
+					showSlides(slideIndex += n);
+				}
+			
+				// Thumbnail image controls
+				function currentSlide(n) {
+					showSlides(slideIndex = n);
+				}
+			
+				function showSlides(n) {
+					let i;
+					let slides = document.getElementsByClassName("mySlides");
+					let dots = document.getElementsByClassName("dot");
+			
+					if (n > slides.length) { slideIndex = 1; }
+					if (n < 1) { slideIndex = slides.length; }
+			
+					// Hide all slides
+					for (i = 0; i < slides.length; i++) {
+						slides[i].style.display = "none";
+					}
+			
+					// Remove "active" class from all dots
+					for (i = 0; i < dots.length; i++) {
+						dots[i].className = dots[i].className.replace(" active", "");
+					}
+			
+					// Show the current slide and activate the corresponding dot
+					slides[slideIndex - 1].style.display = "block";
+					dots[slideIndex - 1].className += " active";
+				}
+			
+				// Optional: Auto-play the slideshow
+				let autoSlideInterval = setInterval(() => plusSlides(1), 5000); // Change slide every 5 seconds
+			
+				// Optional: Pause auto-play on hover
+				const slideshowContainer = document.querySelector('.slideshow-container');
+				slideshowContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+				slideshowContainer.addEventListener('mouseleave', () => {
+					autoSlideInterval = setInterval(() => plusSlides(1), 5000);
+				});
+			</script>
 
 	</body>
 </html>
